@@ -1,5 +1,5 @@
-﻿using KDSA.DataModel;
-using KDSA.Helpers;
+﻿using ADS.DataModel;
+using ADS.Helpers;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace KDSA
+namespace ADS
 {
     class Program
     {

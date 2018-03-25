@@ -7,8 +7,8 @@
     <ProjectGuid>{861F9A3C-96C6-484F-BA4C-DC2EFE0571C9}</ProjectGuid>
     <OutputType>Exe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>KDSA</RootNamespace>
-    <AssemblyName>KDSA</AssemblyName>
+    <RootNamespace>ADS</RootNamespace>
+    <AssemblyName>ADS</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
