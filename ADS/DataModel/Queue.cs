@@ -18,14 +18,15 @@ namespace ADS.DataModel
             _start = 0;
             _end = 0;
             _size = size;
+            _array = new int[size];
         }
 
         public bool Push(int value)
         {
             if ((_end + 1) % _size == _start)
                 return false;
-            _end = (_end + 1) % _size;
             _array[_end] = value;
+            _end = (_end + 1) % _size;
             return true;
         }
 
@@ -37,6 +38,21 @@ namespace ADS.DataModel
             ret = _array[_start];
             _start = (_start + 1) % _size;
             return ret;
+        }
+
+        public override string ToString()
+        {
+            StringBuilder sb = new StringBuilder();
+            int count = _start < _end ? _end - _start : _size + _end - _start;
+
+            for (int i = 0; i < count; i++)
+            {
+                sb.Append(_array[(i + _start) % _size]);
+                sb.Append(", ");
+            }
+            if (sb.Length > 2)
+                sb.Remove(sb.Length - 2, 2);
+            return sb.ToString();
         }
     }
 }

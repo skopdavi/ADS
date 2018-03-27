@@ -27,13 +27,29 @@ namespace ADS
             Console.WriteLine(stack.ToString());
         }
 
+        private static void TestQueue(int count, List<int> lst)
+        {
+            Queue queue = new Queue(count);
+            foreach (var value in lst)
+            {
+                queue.Push(value);
+            }
+            Console.WriteLine(queue.ToString());
+            Console.WriteLine(queue.Pop().ToString());
+            Console.WriteLine(queue.Pop().ToString());
+            Console.WriteLine(queue.ToString());
+            if (!queue.Push(1))
+                Console.WriteLine("Fronta je plná.");
+            Console.WriteLine(queue.ToString());
+        }
+
 
         static void Main(string[] args)
         {
 
             //Lze upravit výchozí hodnoty pro generování
             int min = 0;
-            int max = 20;
+            int max = 30;
             int count = 10;
             string path;
             string fileName;
@@ -110,7 +126,21 @@ namespace ADS
             }
 
             //Otestuje vložit všechny hodnoty do stacku + jednu navíc
+            /*Console.WriteLine("Stack");
             TestStack(count, lst);
+
+            //Otestuje vložit všechny hodnoty do queue + jednu navíc
+            Console.WriteLine("Queue");
+            TestQueue(count, lst);*/
+            Console.WriteLine();
+            Console.WriteLine("Vygenerované pole");
+            Console.WriteLine(String.Join(", ", lst.ToArray()));
+            Console.WriteLine("Select sort");
+            Console.WriteLine(String.Join(", ", SortingHelper.SelectSort(lst.ToArray())));
+            Console.WriteLine("Insert sort");
+            Console.WriteLine(String.Join(", ", SortingHelper.InsertSort(lst.ToArray())));
+            Console.WriteLine("Bubble sort");
+            Console.WriteLine(String.Join(", ", SortingHelper.BubbleSort(lst.ToArray())));
 
             Console.ReadKey();
         }
