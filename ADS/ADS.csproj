@@ -43,6 +43,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DataModel\Queue.cs" />
     <Compile Include="DataModel\Stack.cs" />
     <Compile Include="Helpers\RandomGeneratorHelper.cs" />
     <Compile Include="Helpers\SortingHelper.cs" />

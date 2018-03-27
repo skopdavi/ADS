@@ -6,38 +6,37 @@ using System.Threading.Tasks;
 
 namespace ADS.DataModel
 {
-    class Stack
+    class Queue
     {
         private int _size;
-        private int _position;
+        private int _start;
+        private int _end;
         private int[] _array;
 
-        public Stack(int size)
+        public Queue(int size)
         {
+            _start = 0;
+            _end = 0;
             _size = size;
-            _position = -1;
-            _array = new int[size];
         }
 
         public bool Push(int value)
         {
-            if (_size == _position + 1)
+            if ((_end + 1) % _size == _start)
                 return false;
-            _array[++_position] = value;
+            _end = (_end + 1) % _size;
+            _array[_end] = value;
             return true;
         }
 
         public int Pop()
         {
             int ret = -1;
-            if (_position != -1)
-                ret = _array[_position--];
+            if (_end == _start)
+                return ret;
+            ret = _array[_start];
+            _start = (_start + 1) % _size;
             return ret;
-        }
-
-        public override string ToString()
-        {
-            return String.Join(", ",_array.ToList().GetRange(0,_position));
         }
     }
 }

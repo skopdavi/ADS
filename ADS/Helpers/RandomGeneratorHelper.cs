@@ -11,9 +11,9 @@ namespace ADS.Helpers
         /// <summary>
         /// Generates numbers to file.
         /// </summary>
-        /// <param name="min">Min value of number</param>
-        /// <param name="max">Max value of number</param>
-        /// <param name="count">Count of numbers</param>
+        /// <param name="min">Min value of generated number</param>
+        /// <param name="max">Max value of generated number</param>
+        /// <param name="count">Count of generated numbers</param>
         /// <param name="filePath">Name of file with path to store numbers</param>
         /// <returns>True if file is saved, otherwise return false</returns>
         public static bool GetRandomNumbers(int min, int max, int count, string filePath)
@@ -68,6 +68,22 @@ namespace ADS.Helpers
                 Console.WriteLine(@"Při vytváření souboru došlo k chybě.");
                 return false;
             }
+        }
+        /// <summary>
+        /// Generates numbers to List.
+        /// </summary>
+        /// <param name="min">Min value of generated number</param>
+        /// <param name="max">Max value of generated number</param>
+        /// <param name="count">Count of generated numbers</param>
+        /// <returns>List of generated numbers.</returns>
+        public static List<int> GetRandomNumbers(int min, int max, int count)
+        {
+            List<int> ret = new List<int>();
+
+            //Generování pole dle zadaných parametrů
+            for (int i = 0; i < count; i++)
+                ret.Add(_random.Next(min, max));
+            return ret;
         }
     }
 }
