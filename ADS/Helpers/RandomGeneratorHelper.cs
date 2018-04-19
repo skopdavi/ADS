@@ -80,7 +80,7 @@ namespace ADS.Helpers
         {
             List<int> ret = new List<int>();
 
-            //Generování pole dle zadaných parametrů
+            //Generování seznamu dle zadaných parametrů
             for (int i = 0; i < count; i++)
                 ret.Add(_random.Next(min, max));
             return ret;

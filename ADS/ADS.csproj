@@ -47,7 +47,10 @@
     <Compile Include="DataModel\GenericStack.cs" />
     <Compile Include="DataModel\Queue.cs" />
     <Compile Include="DataModel\Stack.cs" />
+    <Compile Include="Helpers\FileReader.cs" />
+    <Compile Include="Helpers\FileWriter.cs" />
     <Compile Include="Helpers\RandomGeneratorHelper.cs" />
+    <Compile Include="Helpers\SearchHelper.cs" />
     <Compile Include="Helpers\SortingHelper.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
