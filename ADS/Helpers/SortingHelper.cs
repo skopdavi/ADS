@@ -66,10 +66,10 @@ namespace ADS.Helpers
             {
                 swap = false;
                 //Projde neseřazenou část pole
-                for (int j = 1; j < array.Count()-i; j++)
+                for (int j = 1; j < array.Count() - i; j++)
                 {
                     //Pokud je hodnota na nižší pozici větší, prohoď je
-                    if (array[j] < array[j-1])
+                    if (array[j] < array[j - 1])
                     {
                         //Informace o tom, že došlo k prohození
                         swap = true;
@@ -83,6 +83,64 @@ namespace ADS.Helpers
             return array;
         }
 
+        #region QuickSort
+        private static void Divide(int[] array, int left, int right)
+        {
+            //Uchování výchozích pozic, tedy levé a pravé strany pro použití v této rekurzi(vnoření)
+            int start = left;
+            int end = right;
+            //Počet prvků v části řazeného pole
+            int count = end - start + 1;
+            //Vyřešení jednoducých stavů
+            if (count == 2)
+            {
+                if (array[start] > array[end])
+                    swapValue(start, end, array);
+                return;
+            }
+            //dohledání pivota a načtení hodnoty pivota
+            int pivot = (end + start + 1) / 2;
+            int pivotValue = array[pivot];
+            //Dokud je start menší než end
+            while (end - start > 0)
+            {
+                //hledání hodnoty pro swap - hledám menší hodnotu než je pivot
+                while (array[start] < pivotValue)
+                {
+                    start++;
+                }
+                //hledání hodnoty pro swap - hledám větší hodnotu než je pivot
+                while (array[end] > pivotValue )
+                {
+                    end--;
+                }
+                //Pokud nejsou pozice stejné(neměním sebe), tak prověď prohození
+                if (start < end)
+                {
+                    swapValue(start++, end--, array);
+                }
+            }
+            //Pokud mohu řadit, tedy počet je větší než 1, tak řaď pole
+            if (left < end)
+            {
+                Divide(array, left, end);
+            }
+            //Pokud mohu řadit, tedy počet je větší než 1, tak řaď pole
+            if (start < right)
+            {
+                Divide(array, start, right);
+            }
+            
+        }
+
+        public static void QuickSort(int[] array)
+        {
+            int left = 0;
+            int right = array.Count() - 1;
+
+            Divide(array, left, right);
+        }
+        #endregion
 
     }
 }

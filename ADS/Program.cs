@@ -48,9 +48,9 @@ namespace ADS
         {
 
             //Lze upravit výchozí hodnoty pro generování
-            int min = 0;
-            int max = 30;
-            int count = 10;
+            int min = -500;
+            int max = 200;
+            int count = 1000;
             string path;
             string fileName;
             string saveQ;
@@ -92,12 +92,12 @@ namespace ADS
                 while (!int.TryParse(Console.ReadLine(), out count))
                     Console.Write("Vstup není platný. Zadejte počet generovaných čísel: ");
 
-                Console.Write("Zadejte absolutní cestu pro uložení vygenerovaných čísel do souboru: ");
+                Console.Write("Zadejte absolutní cestu pro uložení vygenerovaných čísel do souboru(bez názvu souboru): ");
                 path = Console.ReadLine();
 
                 while (!Directory.Exists(path))
                 {
-                    Console.Write("Vstup není platný. Zadejte absolutní cestu pro uložení vygenerovaných čísel do souboru včetně názvu souboru: ");
+                    Console.Write("Vstup není platný. Zadejte absolutní cestu pro uložení vygenerovaných čísel do souboru(bez názvu souboru): ");
                     path = Console.ReadLine();
                 }
 
@@ -133,14 +133,35 @@ namespace ADS
             Console.WriteLine("Queue");
             TestQueue(count, lst);*/
             Console.WriteLine();
-            Console.WriteLine("Vygenerované pole");
-            Console.WriteLine(String.Join(", ", lst.ToArray()));
-            Console.WriteLine("Select sort");
+            /*Console.WriteLine("Vygenerované pole");
+            Console.WriteLine(String.Join(", ", lst.ToArray()));*/
+            /*Console.WriteLine("Select sort");
             Console.WriteLine(String.Join(", ", SortingHelper.SelectSort(lst.ToArray())));
             Console.WriteLine("Insert sort");
             Console.WriteLine(String.Join(", ", SortingHelper.InsertSort(lst.ToArray())));
             Console.WriteLine("Bubble sort");
-            Console.WriteLine(String.Join(", ", SortingHelper.BubbleSort(lst.ToArray())));
+            Console.WriteLine(String.Join(", ", SortingHelper.BubbleSort(lst.ToArray())));*/
+
+            //arr = FileReader.ReadToList(path).ToArray();
+            var arr = lst.ToArray();
+            SortingHelper.QuickSort(arr);
+            FileWriter.WriteListToFile(arr.ToList(), @"c:\skola\ADS\Quick.txt");
+
+            int val = 0;
+            Console.Write("Zadejte hledanou hodnotu čísla: ");
+            while (!int.TryParse(Console.ReadLine(), out val))
+                Console.Write("Vstup není platný. Zadejte hledanou hodnotu čísla: ");
+            var retLst = SearchHelper.BinarySearch(arr, val);
+            if (retLst.Count == 0)
+            {
+                Console.WriteLine("Hledaná hodnota {0} nebyla nalezena", val);
+            }
+            else
+            {
+                Console.WriteLine("Hledaná hodnota {0} se nachází na pozicích: ", val);
+                foreach(var pos in retLst)
+                    Console.WriteLine(pos);
+            }
 
             Console.ReadKey();
         }
